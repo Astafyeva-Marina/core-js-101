@@ -66,7 +66,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  return value.replace("Hello, ", "").replace("!", "");
+  return value.replace('Hello, ', '').replace('!', '');
 }
 
 
@@ -127,7 +127,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-  return str.replace(value, "");
+  return str.replace(value, '');
 }
 
 /**
@@ -142,7 +142,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  return str.replace(/[<>]/g, "");
+  return str.replace(/[<>]/g, '');
 }
 
 
@@ -176,7 +176,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-  return str.split(";");
+  return str.split(';');
 }
 
 /**
@@ -207,29 +207,29 @@ function getRectangleString(width, height) {
   for (let i = 0; i < height; i += 1) {
     firstLine[i] = [];
     for (let j = 0; j < width; j += 1) {
-      arr[i][j] = '─';
+      firstLine[i][j] = '─';
       if (j > 0 && i > 0 && j !== width - 1 && i !== height - 1) {
-        arr[i][j] = ' ';
+        firstLine[i][j] = ' ';
       }
       if (i === 0 && j === 0) {
-        arr[i][j] = '┌';
+        firstLine[i][j] = '┌';
       }
       if ((j === 0 || j === width - 1) && i > 0 && i !== height - 1) {
-        arr[i][j] = '│';
+        firstLine[i][j] = '│';
       }
       if (i === height - 1 && j === 0) {
-        arr[i][j] = '└';
+        firstLine[i][j] = '└';
       }
       if (j === width - 1 && i === 0) {
-        arr[i][j] = '┐';
+        firstLine[i][j] = '┐';
       }
       if (j === width - 1 && i === height - 1) {
-        arr[i][j] = '┘';
+        firstLine[i][j] = '┘';
       }
     }
-    firstLine[i] = `$firstLine[i].join("")}\n`;
+    firstLine[i] = '$firstLine[i].join("")}\n';
   }
-  return firstLine.join("");
+  return firstLine.join('');
 }
 
 
