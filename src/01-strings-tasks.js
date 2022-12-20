@@ -52,7 +52,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-  return `Hello, ${firstName} ${lastName}`;
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -203,33 +203,24 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  const firstLine = [];
-  for (let i = 0; i < height; i += 1) {
-    firstLine[i] = [];
-    for (let j = 0; j < width; j += 1) {
-      firstLine[i][j] = '─';
-      if (j > 0 && i > 0 && j !== width - 1 && i !== height - 1) {
-        firstLine[i][j] = ' ';
-      }
-      if (i === 0 && j === 0) {
-        firstLine[i][j] = '┌';
-      }
-      if ((j === 0 || j === width - 1) && i > 0 && i !== height - 1) {
-        firstLine[i][j] = '│';
-      }
-      if (i === height - 1 && j === 0) {
-        firstLine[i][j] = '└';
-      }
-      if (j === width - 1 && i === 0) {
-        firstLine[i][j] = '┐';
-      }
-      if (j === width - 1 && i === height - 1) {
-        firstLine[i][j] = '┘';
-      }
-    }
-    firstLine[i] = '$firstLine[i].join("")}\n';
-  }
-  return firstLine.join('');
+  const chars = {
+    startTop: '┌',
+    endTop: '┐',
+    horLine: '─',
+    vertLine: '│',
+    startBottom: '└',
+    endBottom: '┘',
+  };
+  const firstLine = `${
+    chars.startTop + chars.horLine.repeat(width - 2) + chars.endTop
+  }\n`;
+  const middleLine = `${
+    chars.vertLine + ' '.repeat(width - 2) + chars.vertLine
+  }\n`;
+  const lastLine = `${
+    chars.startBottom + chars.horLine.repeat(width - 2) + chars.endBottom
+  }\n`;
+  return firstLine + middleLine.repeat(height - 2) + lastLine;
 }
 
 
